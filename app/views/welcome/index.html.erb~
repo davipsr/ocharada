@@ -7,7 +7,11 @@
 </head>
     <div id="main">
     	<div id="header" style="background:black">
-	   <font color="white"<h1>O Charada</h1></font>
+	   <font color="white"<h1>O Charada</h1>
+           <div id="right">
+             login: <%= text_field_tag :login %><br>
+             password: <%= text_field_tag :password %>
+           </div></font>
 	</div>
 	<div id="left">
 
@@ -16,15 +20,14 @@
          <%= text_field_tag :name %><br>
 	 Insira seu Gravatar<br>
          <%= text_field_tag :gravatar %><br>
-	   O que é o que é?<br>
 	   <%= @hall.charade.question %><br>
            resposta:<br>
          <%= text_field_tag :teste %>
-         <%= submit_tag :enviar, :action => "enviar" %>
+         <%= submit_tag :enviar, :action => "send" %>
 	</div>
 	<div id="right">
 	  <% for user in @hall.users %>
-            <%= user.name %><br>        
+            <%= user.login %><br>
 	  <% end %>
 	</div>
 

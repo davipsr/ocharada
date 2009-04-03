@@ -1547,3 +1547,376 @@ Rendering welcome/index
   [4;35;1mUser Load (13.7ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `winners` ON `users`.id = `winners`.user_id WHERE ((`winners`.hall_id = 1)) [0m
   [4;36;1mUser Columns (14.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
 Completed in 274ms (View: 124, DB: 104) | 200 OK [http://localhost/]
+  [4;36;1mSQL (495.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (433.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (413.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (347.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateCharades (20090403182835)
+Migrating to CreateHalls (20090403185736)
+Migrating to CreateWinners (20090403201017)
+Migrating to CreateUsers (20090403213642)
+  [4;36;1mSQL (4.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (934.3ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(40), `name` varchar(100) DEFAULT '', `email` varchar(100), `hits` int(11), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(40), `remember_token_expires_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1228.8ms)[0m   [0;1mCREATE UNIQUE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;35;1mSQL (420.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090403213642')[0m
+  [4;36;1mSQL (22.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (427.4ms)[0m   [0mSHOW FIELDS FROM `charades`[0m
+  [4;36;1mSQL (17.6ms)[0m   [0;1mdescribe `charades`[0m
+  [4;35;1mSQL (8.3ms)[0m   [0mSHOW KEYS FROM `charades`[0m
+  [4;36;1mSQL (7.8ms)[0m   [0;1mSHOW FIELDS FROM `halls`[0m
+  [4;35;1mSQL (9.3ms)[0m   [0mdescribe `halls`[0m
+  [4;36;1mSQL (4.4ms)[0m   [0;1mSHOW KEYS FROM `halls`[0m
+  [4;35;1mSQL (33.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (63.2ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (14.3ms)[0m   [0;1mSHOW FIELDS FROM `winners`[0m
+  [4;35;1mSQL (16.4ms)[0m   [0mdescribe `winners`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `winners`[0m
+  [4;35;1mSQL (3.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (47.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-04-03 18:47:08) [GET]
+Rendering template within layouts/users
+Rendering users/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #10 of app/views/users/index.html.erb:
+7:     <th>Hits</th>
+8:   </tr>
+9: 
+10: <% @users.each do |user| %>
+11:   <tr>
+12:     <td><%=h user.name %></td>
+13:     <td><%=h user.gravatar %></td>
+
+    app/views/users/index.html.erb:10
+
+Rendered rescues/_trace (530.9ms)
+Rendered rescues/_request_and_response (107.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (3.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (7.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-04-03 18:47:54) [GET]
+Rendering sessions/new
+Completed in 721ms (View: 718, DB: 11) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (1.9ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (19.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-04-03 18:48:23) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"R/f7lmoTJGy7xV85e9KoUbZHLxYqkQvheJW7i1mNbsM=", "login"=>"admin", "password"=>"admin"}
+
+NameError (uninitialized constant User::Authentication):
+  app/models/user.rb:4
+  lib/authenticated_system.rb:138:in `logout_keeping_session!'
+  app/controllers/sessions_controller.rb:11:in `create'
+
+Rendered rescues/_trace (167.7ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#index (for 127.0.0.1 at 2009-04-03 18:49:00) [GET]
+
+ActionController::UnknownAction (No action responded to index. Actions: create, destroy, and new):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (4.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-04-03 18:49:05) [GET]
+Rendering sessions/new
+Completed in 18ms (View: 16, DB: 6) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (2.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-04-03 18:49:11) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"R/f7lmoTJGy7xV85e9KoUbZHLxYqkQvheJW7i1mNbsM=", "login"=>"", "password"=>""}
+
+NameError (uninitialized constant User::Authentication):
+  app/models/user.rb:4
+  lib/authenticated_system.rb:138:in `logout_keeping_session!'
+  app/controllers/sessions_controller.rb:11:in `create'
+
+Rendered rescues/_trace (1430.9ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (2.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-04-03 18:51:22) [GET]
+Rendering template within layouts/users
+Rendering users/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #10 of app/views/users/index.html.erb:
+7:     <th>Hits</th>
+8:   </tr>
+9: 
+10: <% @users.each do |user| %>
+11:   <tr>
+12:     <td><%=h user.name %></td>
+13:     <td><%=h user.gravatar %></td>
+
+    app/views/users/index.html.erb:10
+
+Rendered rescues/_trace (278.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (19.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-04-03 18:52:50) [GET]
+Rendering template within layouts/users
+Rendering users/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #10 of app/views/users/index.html.erb:
+7:     <th>Hits</th>
+8:   </tr>
+9: 
+10: <% @users.each do |user| %>
+11:   <tr>
+12:     <td><%=h user.name %></td>
+13:     <td><%=h user.gravatar %></td>
+
+    app/views/users/index.html.erb:10
+
+Rendered rescues/_trace (510.7ms)
+Rendered rescues/_request_and_response (13.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-04-03 18:52:55) [GET]
+Rendering sessions/new
+Completed in 53ms (View: 50, DB: 4) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-04-03 18:52:58) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"R/f7lmoTJGy7xV85e9KoUbZHLxYqkQvheJW7i1mNbsM=", "login"=>"", "password"=>""}
+Failed login for '' from 127.0.0.1 at Fri Apr 03 21:52:58 UTC 2009
+Rendering sessions/new
+Completed in 533ms (View: 24, DB: 3) | 200 OK [http://localhost/session]
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-04-03 18:53:04) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"R/f7lmoTJGy7xV85e9KoUbZHLxYqkQvheJW7i1mNbsM=", "login"=>"", "password"=>""}
+Failed login for '' from 127.0.0.1 at Fri Apr 03 21:53:04 UTC 2009
+Rendering sessions/new
+Completed in 42ms (View: 3, DB: 4) | 200 OK [http://localhost/session]
+  [4;36;1mSQL (2.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-04-03 18:53:10) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"R/f7lmoTJGy7xV85e9KoUbZHLxYqkQvheJW7i1mNbsM=", "login"=>"admin", "password"=>"admin"}
+  [4;36;1mUser Columns (38.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (198.9ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'admin') LIMIT 1[0m
+Failed login for 'admin' from 127.0.0.1 at Fri Apr 03 21:53:11 UTC 2009
+Rendering sessions/new
+Completed in 338ms (View: 5, DB: 241) | 200 OK [http://localhost/session]
+  [4;36;1mSQL (2.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-04-03 18:53:53) [GET]
+  [4;36;1mUser Columns (23.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/new
+Completed in 235ms (View: 142, DB: 27) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (1.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-03 18:54:13) [GET]
+
+SyntaxError (/var/app/ocharada/app/controllers/welcome_controller.rb:9: syntax error, unexpected tNEQ
+    if != user.nil?
+         ^
+/var/app/ocharada/app/controllers/welcome_controller.rb:27: syntax error, unexpected kEND, expecting $end):
+  
+
+Rendered rescues/_trace (168.2ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.5ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-04-03 18:55:13) [GET]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-03 18:55:13) [GET]
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  
+
+Rendered rescues/_trace (319.4ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.7ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-04-03 18:55:31) [GET]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-03 18:55:31) [GET]
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  
+
+Rendered rescues/_trace (142.9ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.8ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-04-03 18:55:51) [GET]
+  [4;35;1mHall Columns (21.5ms)[0m   [0mSHOW FIELDS FROM `halls`[0m
+  [4;36;1mHall Load (27.4ms)[0m   [0;1mSELECT * FROM `halls` WHERE (`halls`.`date` = '2009-04-03 00:00:00') LIMIT 1[0m
+Rendering welcome/index
+  [4;35;1mCharade Columns (36.3ms)[0m   [0mSHOW FIELDS FROM `charades`[0m
+  [4;36;1mCharade Load (42.4ms)[0m   [0;1mSELECT * FROM `charades` WHERE (`charades`.`id` = 1) [0m
+  [4;35;1mUser Load (3.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `winners` ON `users`.id = `winners`.user_id WHERE ((`winners`.hall_id = 1)) [0m
+Completed in 551ms (View: 230, DB: 134) | 200 OK [http://localhost/]
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-04-03 18:56:35) [GET]
+  [4;36;1mUser Columns (34.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/users
+Rendering users/new
+Completed in 114ms (View: 27, DB: 38) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (9.7ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (18.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-04-03 18:57:04) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"R/f7lmoTJGy7xV85e9KoUbZHLxYqkQvheJW7i1mNbsM=", "user"=>{"password_confirmation"=>"620823dv", "password"=>"620823dv", "login"=>"davi.ruiz", "email"=>"davi.psr@gmail.com"}}
+  [4;35;1mUser Columns (32.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (38.5ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Exists (50.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'davi.ruiz') LIMIT 1[0m
+  [4;36;1mUser Exists (3.1ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'davi.psr@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Create (40.1ms)[0m   [0mINSERT INTO `users` (`name`, `hits`, `salt`, `created_at`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `remember_token`, `login`, `email`) VALUES('', NULL, 'ea7208a448b2b92d56833facc03836b427c10697', '2009-04-03 21:57:04', 'c1452c4cb383e2a57bcf41f3534f7b203192791d', NULL, '2009-04-03 21:57:04', NULL, 'davi.ruiz', 'davi.psr@gmail.com')[0m
+  [4;36;1mSQL (99.4ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 325ms (DB: 292) | 302 Found [http://localhost/users]
+  [4;35;1mSQL (2.5ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-04-03 18:57:05) [GET]
+  [4;35;1mHall Columns (23.8ms)[0m   [0mSHOW FIELDS FROM `halls`[0m
+  [4;36;1mHall Load (3.8ms)[0m   [0;1mSELECT * FROM `halls` WHERE (`halls`.`date` = '2009-04-03 00:00:00') LIMIT 1[0m
+Rendering welcome/index
+  [4;35;1mCharade Columns (10.7ms)[0m   [0mSHOW FIELDS FROM `charades`[0m
+  [4;36;1mCharade Load (1.7ms)[0m   [0;1mSELECT * FROM `charades` WHERE (`charades`.`id` = 1) [0m
+  [4;35;1mUser Load (19.6ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `winners` ON `users`.id = `winners`.user_id WHERE ((`winners`.hall_id = 1)) [0m
+  [4;36;1mUser Columns (22.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 201ms (View: 102, DB: 88) | 200 OK [http://localhost/]
+  [4;35;1mSQL (1.7ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-04-03 18:57:30) [GET]
+  [4;35;1mHall Columns (28.6ms)[0m   [0mSHOW FIELDS FROM `halls`[0m
+  [4;36;1mHall Load (5.5ms)[0m   [0;1mSELECT * FROM `halls` WHERE (`halls`.`date` = '2009-04-03 00:00:00') LIMIT 1[0m
+Rendering welcome/index
+  [4;35;1mCharade Columns (28.9ms)[0m   [0mSHOW FIELDS FROM `charades`[0m
+  [4;36;1mCharade Load (24.2ms)[0m   [0;1mSELECT * FROM `charades` WHERE (`charades`.`id` = 1) [0m
+  [4;35;1mUser Load (6.6ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `winners` ON `users`.id = `winners`.user_id WHERE ((`winners`.hall_id = 1)) [0m
+  [4;36;1mUser Columns (24.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 216ms (View: 72, DB: 122) | 200 OK [http://localhost/]
+  [4;35;1mSQL (2.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HallsController#index (for 127.0.0.1 at 2009-04-03 18:57:50) [GET]
+  [4;35;1mHall Load (26.8ms)[0m   [0mSELECT * FROM `halls` [0m
+Rendering template within layouts/halls
+Rendering halls/index
+  [4;36;1mHall Columns (12.3ms)[0m   [0;1mSHOW FIELDS FROM `halls`[0m
+Completed in 1380ms (View: 1308, DB: 43) | 200 OK [http://localhost/halls]
+  [4;35;1mSQL (2.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-04-03 18:58:52) [GET]
+  [4;35;1mHall Columns (12.7ms)[0m   [0mSHOW FIELDS FROM `halls`[0m
+  [4;36;1mHall Load (3.5ms)[0m   [0;1mSELECT * FROM `halls` WHERE (`halls`.`date` = '2009-04-03 00:00:00') LIMIT 1[0m
+Rendering welcome/index
+  [4;35;1mCharade Columns (8.9ms)[0m   [0mSHOW FIELDS FROM `charades`[0m
+  [4;36;1mCharade Load (2.2ms)[0m   [0;1mSELECT * FROM `charades` WHERE (`charades`.`id` = 1) [0m
+  [4;35;1mUser Load (2.5ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `winners` ON `users`.id = `winners`.user_id WHERE ((`winners`.hall_id = 1)) [0m
+  [4;36;1mUser Columns (25.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 258ms (View: 132, DB: 59) | 200 OK [http://localhost/]
+  [4;35;1mSQL (1.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-04-03 18:59:28) [GET]
+  [4;35;1mHall Columns (24.1ms)[0m   [0mSHOW FIELDS FROM `halls`[0m
+  [4;36;1mHall Load (15.3ms)[0m   [0;1mSELECT * FROM `halls` WHERE (`halls`.`date` = '2009-04-03 00:00:00') LIMIT 1[0m
+Rendering welcome/index
+  [4;35;1mCharade Columns (26.3ms)[0m   [0mSHOW FIELDS FROM `charades`[0m
+  [4;36;1mCharade Load (2.8ms)[0m   [0;1mSELECT * FROM `charades` WHERE (`charades`.`id` = 1) [0m
+  [4;35;1mUser Load (3.6ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `winners` ON `users`.id = `winners`.user_id WHERE ((`winners`.hall_id = 1)) [0m
+  [4;36;1mUser Columns (19.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 242ms (View: 108, DB: 95) | 200 OK [http://localhost/]
+  [4;35;1mSQL (1.9ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-04-03 19:00:17) [GET]
+  [4;35;1mHall Columns (29.3ms)[0m   [0mSHOW FIELDS FROM `halls`[0m
+  [4;36;1mHall Load (15.0ms)[0m   [0;1mSELECT * FROM `halls` WHERE (`halls`.`date` = '2009-04-03 00:00:00') LIMIT 1[0m
+Rendering welcome/index
+  [4;35;1mCharade Columns (28.9ms)[0m   [0mSHOW FIELDS FROM `charades`[0m
+  [4;36;1mCharade Load (15.7ms)[0m   [0;1mSELECT * FROM `charades` WHERE (`charades`.`id` = 1) [0m
+  [4;35;1mUser Load (7.7ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `winners` ON `users`.id = `winners`.user_id WHERE ((`winners`.hall_id = 1)) [0m
+  [4;36;1mUser Columns (27.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 456ms (View: 319, DB: 128) | 200 OK [http://localhost/]
+  [4;35;1mSQL (1.9ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-04-03 19:00:58) [GET]
+  [4;35;1mHall Columns (26.3ms)[0m   [0mSHOW FIELDS FROM `halls`[0m
+  [4;36;1mHall Load (7.7ms)[0m   [0;1mSELECT * FROM `halls` WHERE (`halls`.`date` = '2009-04-03 00:00:00') LIMIT 1[0m
+Rendering welcome/index
+  [4;35;1mCharade Columns (17.7ms)[0m   [0mSHOW FIELDS FROM `charades`[0m
+  [4;36;1mCharade Load (8.8ms)[0m   [0;1mSELECT * FROM `charades` WHERE (`charades`.`id` = 1) [0m
+  [4;35;1mUser Load (2.8ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `winners` ON `users`.id = `winners`.user_id WHERE ((`winners`.hall_id = 1)) [0m
+  [4;36;1mUser Columns (27.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 203ms (View: 85, DB: 95) | 200 OK [http://localhost/]
+  [4;35;1mSQL (1.7ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-04-03 19:02:12) [GET]
+Rendering sessions/new
+Completed in 18ms (View: 4, DB: 5) | 200 OK [http://localhost/login]

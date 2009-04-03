@@ -1,0 +1,11 @@
+class User < ActiveRecord::Base
+  has_many :winners
+  has_many :halls,
+    :through => :winners
+  validates_presence_off :name, :gravatar
+
+  def self.authenticate(gravatar, password)
+    user = User.find_by_gravatar(gravatar)
+    if user.password == password ? user : nil
+  end
+end
