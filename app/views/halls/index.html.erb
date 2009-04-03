@@ -1,0 +1,22 @@
+<h1>Listing halls</h1>
+
+<table>
+  <tr>
+    <th>Charade ID</th>
+    <th>Date</th>
+  </tr>
+
+<% @halls.each do |hall| %>
+  <tr>
+    <td><%=h hall.charade_id %></td>
+    <td><%=h hall.date %></td>
+    <td><%= link_to 'Show', hall %></td>
+    <td><%= link_to 'Edit', edit_hall_path(hall) %></td>
+    <td><%= link_to 'Destroy', hall, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New hall', new_hall_path %>

@@ -1,0 +1,24 @@
+<h1>Listing charades</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Question</th>
+    <th>Answer</th>
+  </tr>
+
+<% @charades.each do |charade| %>
+  <tr>
+    <td><%=h charade.name %></td>
+    <td><%=h charade.question %></td>
+    <td><%=h charade.answer %></td>
+    <td><%= link_to 'Show', charade %></td>
+    <td><%= link_to 'Edit', edit_charade_path(charade) %></td>
+    <td><%= link_to 'Destroy', charade, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New charade', new_charade_path %>

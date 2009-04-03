@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @charade.name %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%=h @charade.question %>
+</p>
+
+<p>
+  <b>Answer:</b>
+  <%=h @charade.answer %>
+</p>
+
+
+<%= link_to 'Edit', edit_charade_path(@charade) %> |
+<%= link_to 'Back', charades_path %>

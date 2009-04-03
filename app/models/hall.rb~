@@ -1,0 +1,5 @@
+class Hall < ActiveRecord::Base
+  has_many :winners
+  has_many :users,
+    :through => :winners
+end

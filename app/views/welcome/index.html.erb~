@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<body>
+<head>
+<title>Joker</title>
+</head>
+    <div id="main">
+    	<div id="header" style="background:black">
+	   <font color="white"<h1>O Charada</h1></font>
+	</div>
+	<div id="left">
+
+         <h2><%= @hall.charade.name %></h2><br>
+	 Insira Seu nome<br>
+         <%= text_field_tag :name %><br>
+	 Insira seu Gravatar<br>
+         <%= text_field_tag :gravatar %><br>
+	   O que é o que é?<br>
+	   <%= @hall.charade.question %><br>
+           resposta:<br>
+         <%= text_field_tag :teste %>
+         <%= submit_tag :enviar, :action => "enviar" %>
+	</div>
+	<div id="right">
+	  <% for user in @hall.users %>
+            <%= user.name %><br>        
+	  <% end %>
+	</div>
+
+	<div id="footer">
+
+	</div>
+
+
+    </div>
+
+
+  </body>
+</html>

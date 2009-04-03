@@ -1,0 +1,13 @@
+<p>
+  <b>User:</b>
+  <%=h @hall.user_id %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @hall.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_hall_path(@hall) %> |
+<%= link_to 'Back', halls_path %>
