@@ -30,7 +30,10 @@ ActiveRecord::Schema.define(:version => 20090403213642) do
     t.string   "login",                     :limit => 40
     t.string   "name",                      :limit => 100, :default => ""
     t.string   "email",                     :limit => 100
-    t.integer  "hits"
+    t.integer  "attempts",                                 :default => 0
+    t.integer  "total_attempts",                           :default => 0
+    t.integer  "hits",                                     :default => 0
+    t.integer  "admin",                     :limit => 2,   :default => 0
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
     t.datetime "created_at"
@@ -44,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20090403213642) do
   create_table "winners", :force => true do |t|
     t.integer  "hall_id"
     t.integer  "user_id"
+    t.string   "attempts"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

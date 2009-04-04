@@ -2,6 +2,7 @@ class CreateWinners < ActiveRecord::Migration
   def self.up
     create_table :winners do |t|
       t.references :hall, :user    
+      t.string     :attempts
       t.timestamps
     end
   end

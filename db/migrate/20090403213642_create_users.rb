@@ -4,7 +4,10 @@ class CreateUsers < ActiveRecord::Migration
       t.column :login,                     :string, :limit => 40
       t.column :name,                      :string, :limit => 100, :default => '', :null => true
       t.column :email,                     :string, :limit => 100
-      t.column :hits,                      :integer
+      t.column :attempts,                  :integer, :default => 0
+      t.column :total_attempts,            :integer, :default => 0
+      t.column :hits,                      :integer, :default => 0
+      t.column :admin,                     :smallint, :default => 0
       t.column :crypted_password,          :string, :limit => 40
       t.column :salt,                      :string, :limit => 40
       t.column :created_at,                :datetime

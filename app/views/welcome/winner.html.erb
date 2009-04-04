@@ -1,0 +1,10 @@
+  <h1>Parabéns, <%= @user.name %>!</h1>
+
+  Você acertou a charada: <b>"<%= @hall.charade.name %>"</b>
+  <br>
+  Volte amanhã e tente acertar mais uma!
+  <br>
+  Indique um amigo:
+  <%= text_field_tag :mail %>
+  <%= submit_tag 'Enviar' %>
+

@@ -1,18 +1,23 @@
 class WelcomeController < ApplicationController
+  layout 'welcome'
+  include AuthenticatedSystem
+
+  before_filter :login_required
 
   def index
     @hall = Hall.find_by_date(Time.today)
-  end
-  
-
-#  def send
-#    user = User.find_by_gravatar(params[:gravatar])
-#    if user.nil?
-#      user = User.new(params[:name], params[:gravatar])
-#    end
-#    user.hits = users.hits + 1
-#    user.save
-#    redirect_to :action => 'index'
-#  end
+    @hall.users.each do |user|
+      winner = Winner.find_by_user_id(user.id)
+      user.attempts = winner.attempts
+    end
+    @user = User.find(session[:user_id])
+    #@hall.users.each do |user|
+    #  if user.id == @user.id 
+    #    flash.now[:notice] = "Azedo"
+    #    render :action => 'winner'
+    #    break
+    #  end
+    #end
+  end  
 
 end

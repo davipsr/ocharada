@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Users: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'calendar' %>
+  <%= stylesheet_link_tag 'welcome' %>
+</head>
+<body>
+<div id="main">
+<div id="header">
+<font color="white">
+<h1>O Charada</h1>
+</font>
+</div>
+<div id="left">
+<%= yield %>
+</div>
+<div id="right">
+  <% if @hall != nil %>
+    <% for user in @hall.users %>
+      <b><%= user.name %></b> Tentativas: <%= user.attempts.to_s %> <br>
+    <% end %>
+  <% end %>
+</div>
+<div id="footer">
+	
+</div>
+</div>
+
+
+  
+
+</body>
+</html>

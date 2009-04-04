@@ -1,0 +1,42 @@
+#calendar {
+  border-collapse: collapse;
+
+}
+ 
+#calendar td,
+#calendar th {
+  color: #ccc;
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 10px;
+  padding: 4px;
+  text-align: center;
+}
+ 
+#calendar th {
+  border: 1px solid #ccc;
+  background: #ccc;
+  color: #666;
+}
+ 
+#calendar td {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  width: 20px;
+}
+ 
+#calendar span {
+  display: block;
+}
+ 
+#calendar td.events {
+  background: #fff;
+}
+ 
+#calendar td.today {
+  background: #ffc;
+  color: #666;
+}
+ 
+#calendar caption {
+  display: none;
+}

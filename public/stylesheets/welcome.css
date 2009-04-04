@@ -1,0 +1,42 @@
+body{
+	margin:10px 15px;
+	font: 12px Arial, Helvetica, sans-serif;
+	background:#ffe;
+	text-align:center;
+	}
+#main {
+	width:760px;	
+	text-align:left;
+	margin:0 auto;
+	}
+#header {	
+	height:80px;
+	background-color:#000000;
+	}
+
+#left {
+	width:578px;
+	background-color:#ffffff;
+	float:left;
+	}
+
+#right {
+	width:180px;
+	background-color:#9cf;
+	float:right;
+	}
+
+#left * {
+	padding: 0 8px;
+	}
+
+#right * {
+	padding: 0 20px;
+	}
+
+#footer {	
+	clear:both;
+	height:20px;
+	background-color:#b5daa2;
+	}
+

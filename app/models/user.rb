@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
 
   validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
+  validates_presence_of     :name
   validates_length_of       :name,     :maximum => 100
 
   validates_presence_of     :email
@@ -48,6 +49,12 @@ class User < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
+
+  def get_attempts
+    self.total_attempts = self.attempts
+    self.attempts = 0
+    return self.total_attempts
+  end  
 
   protected
     

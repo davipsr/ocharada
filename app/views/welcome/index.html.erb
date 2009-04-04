@@ -1,43 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<body>
-<head>
-<title>Joker</title>
-</head>
-    <div id="main">
-    	<div id="header" style="background:black">
-	   <font color="white"<h1>O Charada</h1>
-           <div id="right">
-             login: <%= text_field_tag :login %><br>
-             password: <%= text_field_tag :password %>
-           </div></font>
-	</div>
-	<div id="left">
-
-         <h2><%= @hall.charade.name %></h2><br>
-	 Insira Seu nome<br>
-         <%= text_field_tag :name %><br>
-	 Insira seu Gravatar<br>
-         <%= text_field_tag :gravatar %><br>
-	   <%= @hall.charade.question %><br>
-           Resposta:<br>
-         <%= text_field_tag :teste %>
-         <%= submit_tag :enviar, :action => "send" %>
-	</div>
-	<div id="right">
-	  <% for user in @hall.users %>
-            <%= user.login %><br>
-	  <% end %>
-	</div>
-
-	<div id="footer">
-
-	</div>
-
-
-    </div>
-
-
-  </body>
-</html>
+  <%= calendar :header_format => Date::DATE_FORMATS[:short_day_name] = '%a', :caption_format => :month_year %>
+<p style="color: green"><%= flash[:notice] %></p>
+	 <b>Olá,</b> <%= @user.name %><br>
+         <%= @user.email %><br>
+        <% form_tag '/winner' do -%>
+   	  <% if @hall != nil %>
+           <h2><%= @hall.charade.name %></h2><br>	 
+             Pergunta:
+	     <%= @hall.charade.question %><br>
+             Resposta:<br>
+           <%= text_field_tag :answer %>
+           <%= submit_tag :enviar, :action => "send" %>
+          <% end %>
+        <% end %>
