@@ -1,7 +1,7 @@
 body{
 	margin:10px 15px;
 	font: 12px Arial, Helvetica, sans-serif;
-	background:#ffe;
+	background:#D3D3D3;
 	text-align:center;
 	}
 #main {
@@ -22,8 +22,9 @@ body{
 
 #right {
 	width:180px;
-	background-color:#9cf;
+	background-color:#8b0000;
 	float:right;
+        color:#ffffff;
 	}
 
 #left * {
@@ -37,6 +38,23 @@ body{
 #footer {	
 	clear:both;
 	height:20px;
-	background-color:#b5daa2;
+	background-color:#000000;
+	}
+#content {
+	width:278px;
+	background-color:#ffffff;
+	float:left;
+        color:#000000;
 	}
 
+#extra {
+	width:300px;
+	background-color:#ffffff;
+	float:right;
+        color:#000000;
+	}
+#llogin {
+	width:100px;
+	float:right;
+        color:#000000;
+	}

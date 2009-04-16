@@ -1,10 +1,20 @@
 class UsersController < ApplicationController
+  layout "welcome"
+
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
-  
+  def show
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @hall }
+    end
+  end
 
   # render new.rhtml
   def new
+    @hall = Hall.find_by_date(Time.today)
     @user = User.new
   end
  

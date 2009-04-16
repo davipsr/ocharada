@@ -14,18 +14,20 @@
 <div id="header">
 <font color="white">
 <h1>O Charada</h1>
+<div id="llogin">
+  <%= render :partial => 'users/user_bar' %>
+</div>
 </font>
 </div>
+
 <div id="left">
 <%= yield %>
 </div>
+
 <div id="right">
-  <% if @hall != nil %>
-    <% for user in @hall.users %>
-      <b><%= user.name %></b> Tentativas: <%= user.attempts.to_s %> <br>
-    <% end %>
-  <% end %>
+  <%= render :partial => 'halls/hall' %>
 </div>
+
 <div id="footer">
 	
 </div>

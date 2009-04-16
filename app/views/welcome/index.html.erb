@@ -1,6 +1,7 @@
-  <%= calendar :header_format => Date::DATE_FORMATS[:short_day_name] = '%a', :caption_format => :month_year %>
+<div id="content">
 <p style="color: green"><%= flash[:notice] %></p>
 	 <b>Olá,</b> <%= @user.name %><br>
+         voce tem <%= @user.hits %> hits.<br>
          <%= @user.email %><br>
         <% form_tag '/winner' do -%>
    	  <% if @hall != nil %>
@@ -12,3 +13,7 @@
            <%= submit_tag :enviar, :action => "send" %>
           <% end %>
         <% end %>
+</div>
+<div id="extra">
+  <%= calendar :header_format => Date::DATE_FORMATS[:short_day_name] = '%a', :caption_format => :month_year %>
+</div>

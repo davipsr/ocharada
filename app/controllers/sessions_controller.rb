@@ -1,10 +1,12 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
+  layout "welcome"
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
 
   # render new.rhtml
   def new
+    @hall = Hall.find_by_date(Time.today)
   end
 
   def create

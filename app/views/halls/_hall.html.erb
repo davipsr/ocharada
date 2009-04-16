@@ -1,0 +1,10 @@
+<% if @hall != nil %>
+  <% for user in @hall.users %>
+    <% for winner in hall.winners %>
+      <% if winner.user_id == user.id%> 
+        <b><%= user.name %></b> Tentativas: <%= winner.attempts.to_s %> <br>
+        <% break %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
